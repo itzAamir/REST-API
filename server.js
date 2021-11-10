@@ -6,10 +6,13 @@ const routes = require("./routes/routes.js");
 require("dotenv").config();
 
 // Mongoose Connection
-mongoose.connect(process.env.DB_URL,
-    { useUnifiedTopology: true, useNewUrlParser: true })
-    .then(() => console.log('MongoDB connected...'))
-    .catch(err => console.log(err));;
+mongoose
+	.connect(process.env.DB_URL, {
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+	})
+	.then(() => console.log("MongoDB connected..."))
+	.catch((err) => console.log(err));
 
 const db = mongoose.connection;
 
@@ -17,4 +20,4 @@ const db = mongoose.connection;
 app.use(express.json());
 app.use("/cats", routes);
 
-app.listen(PORT, () => console.log(`Server Started at http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server alive at http://localhost:${PORT}`));
